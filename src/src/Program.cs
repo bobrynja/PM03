@@ -37,7 +37,18 @@ namespace src
 
                 Console.ReadKey();
         }
-    }
+
+            public void Save() //сохранение отсортированного массива в файл (файл находится в папке ConsoleApp1\ConsoleApp1\bin\Debug\netcoreapp3.1)        
+            {
+                StreamWriter sw = new StreamWriter("Person_list.txt");
+                foreach (var i in array)
+                {
+                    sw.WriteLine(i.last_name + " " + i.name + " " + i.age);
+
+                }
+                sw.Close();
+            }
+        }
         class Program
     {
         static void Main(string[] args)
