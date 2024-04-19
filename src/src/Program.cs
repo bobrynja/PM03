@@ -84,7 +84,7 @@ namespace src
                             if (Convert.ToInt32(age) <= 0)
                             {
                                 Console.WriteLine("Ошибка!!!");
-                                break;
+                                System.Environment.Exit(0);
                             }
                             now.age = age;
                             ar.array[j] = now;
