@@ -8,7 +8,20 @@ namespace src
         public string name;
         public string age;
     }
-    class Program
+
+    class HR
+    {
+        public Person[] array; //массив 
+
+        public void Sort()
+        {
+            Person k;
+
+
+            Console.ReadKey();
+        }
+    }
+        class Program
     {
         static void Main(string[] args)
         {
