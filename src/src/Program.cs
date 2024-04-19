@@ -37,9 +37,9 @@ namespace src
                     }
 
                 Console.ReadKey();
+            }
         }
-
-            public void Save() //сохранение отсортированного массива в файл (файл находится в папке ConsoleApp1\ConsoleApp1\bin\Debug\netcoreapp3.1)        
+            public void Save() //сохранение отсортированного массива в файл (файл находится в папке src\bin\Debug\netcoreapp3.1)        
             {
                 StreamWriter sw = new StreamWriter("Person_list.txt");
                 foreach (var i in array)
@@ -49,61 +49,61 @@ namespace src
                 }
                 sw.Close();
             }
-        }
+        
         class Program
-    {
-        static void Main(string[] args)
         {
-            Person now;
-            string last_name, name, age;
-            HR ar = new HR();
-            Console.WriteLine("Введите количество элементов массива: ");
-            try
+            static void Main(string[] args)
             {
-                int i = Convert.ToInt32(Console.ReadLine());
-                while (i <= 0)
+                Person now;
+                string last_name, name, age;
+                HR ar = new HR();
+                Console.WriteLine("Введите количество элементов массива: ");
+                try
                 {
-                    Console.WriteLine("Ошибка!!! Введите количество элементов: ");
-                    i = Convert.ToInt32(Console.ReadLine());
-                }
-
-
-                ar.array = new Person[i];
-                for (int j = 0; j < i; j++)
-                {
-                    now = new Person();
-                    Console.WriteLine($"Ввод {j + 1} элемента: ");
-                    Console.WriteLine("Введите фамилию: ");
-                    now.last_name = Console.ReadLine();
-                    Console.WriteLine("Введите имя: ");
-                    now.name = Console.ReadLine();
-                    Console.WriteLine("Введите возраст: ");
-                    age = Console.ReadLine();
-                    try
+                    int i = Convert.ToInt32(Console.ReadLine());
+                    while (i <= 0)
                     {
-                        if (Convert.ToInt32(age) <= 0)
+                        Console.WriteLine("Ошибка!!! Введите количество элементов: ");
+                        i = Convert.ToInt32(Console.ReadLine());
+                    }
+
+
+                    ar.array = new Person[i];
+                    for (int j = 0; j < i; j++)
+                    {
+                        now = new Person();
+                        Console.WriteLine($"Ввод {j + 1} элемента: ");
+                        Console.WriteLine("Введите фамилию: ");
+                        now.last_name = Console.ReadLine();
+                        Console.WriteLine("Введите имя: ");
+                        now.name = Console.ReadLine();
+                        Console.WriteLine("Введите возраст: ");
+                        age = Console.ReadLine();
+                        try
+                        {
+                            if (Convert.ToInt32(age) <= 0)
+                            {
+                                Console.WriteLine("Ошибка!!!");
+                                break;
+                            }
+                            now.age = age;
+                            ar.array[j] = now;
+                        }
+                        catch
                         {
                             Console.WriteLine("Ошибка!!!");
-                            break;
+                            System.Environment.Exit(0);
                         }
                         now.age = age;
                         ar.array[j] = now;
                     }
-                    catch
-                    {
-                        Console.WriteLine("Ошибка!!!");
-                        System.Environment.Exit(0);
-                    }
-                    now.age = age;
-                    ar.array[j] = now;
+                    ar.Sort();
+                    ar.Save();
                 }
-                ar.Sort();
-                ar.Save();
-            }
-            catch
-            {
-                Console.WriteLine("Ошибка!!!");
+                catch
+                {
+                    Console.WriteLine("Ошибка!!!");
+                }
             }
         }
-    }
-}
+    } }
