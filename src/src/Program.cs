@@ -16,9 +16,26 @@ namespace src
         public void Sort()
         {
             Person k;
+            for (int j = 0; j < array.Length - 1; j++)
+            {
+                for (int l = 0; l < array.Length - 1; l++)
+                    if (string.Compare(array[l].last_name, array[l + 1].last_name) > 0) //сравнение по первому свойству - фамилия
+                    {
+                        k = array[l]; //меняем местами элементы массива
+                        array[l] = array[l + 1];
+                        array[l + 1] = k;
+                    }
+                    else if (string.Compare(array[l].last_name, array[l + 1].last_name) == 0) //сравнение по второму свойству - имя
+                    {
+                        if (string.Compare(array[l].name, array[l + 1].name) > 0)
+                        {
+                            k = array[l];
+                            array[l] = array[l + 1];
+                            array[l + 1] = k;
+                        }
+                    }
 
-
-            Console.ReadKey();
+                Console.ReadKey();
         }
     }
         class Program
